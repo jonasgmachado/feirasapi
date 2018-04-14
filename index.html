@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Feiras de São Paulo</title>
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
+	
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+
+	
+
+
+    <h2>Feiras de São Paulo</h2>
+    <p>Sistema para registro de feiras.</p>
+	
+	<ul>
+		<li>1) faça upload de um arquivo CSV disponibilizado pela prefeitura de São paulo utilizando o script importCsvScript.py</li>
+		<li>2) navegue entre os dados e execute as opções Inserir, Editar, Apagar e Pesquisar Feiras</li>
+	</ul>
+
+	
+    <table id="dg" title="Feiras" class="easyui-datagrid" style="width:100%;height:800px"
+            url="http://127.0.0.1:5000/listafeiras"
+            method="get"
+            toolbar="#toolbar" pagination="false"
+            rownumbers="true" fitColumns="true" singleSelect="true">
+        <thead>
+            <tr>
+                <th field="ID" width="50">ID</th>
+                <th field="LONG" width="50">Longitude</th>
+                <th field="LAT" width="50">Latitude</th>
+                <th field="SETCENS" width="50">Setor censitário</th>
+                <th field="AREAP" width="50">Área de ponderação</th>
+                <th field="CODDIST" width="50">Código do distrito conforme IBGE</th>
+                <th field="DISTRITO" width="50">Distrito municipal</th>
+                <th field="CODSUBPREF" width="50">Código da Subprefeitura</th>
+                <th field="SUBPREF" width="50">Subprefeitura</th>
+                <th field="REGIAO5" width="50">Região conforme divisão do Município em 5 áreas</th>
+                <th field="REGIAO8" width="50">Região conforme divisão do Município em 8 áreas</th>
+                <th field="NOME_FEIRA" width="50">Nome da feira livre</th>
+                <th field="REGISTRO" width="50">Registro da feira livre</th>
+                <th field="LOGRADOURO" width="50">Logradouro</th>
+                <th field="NUMERO" width="50">Número</th>
+                <th field="BAIRRO" width="50">Bairro</th>
+                <th field="REFERENCIA" width="50">Ponto de referência</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="novaFeira()">Nova Feira</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editarFeira()">Editar Feira</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="apagarFeira()">Apagar Feira</a>
+        <input name="nomePesquisa" class="easyui-textbox" label="" style="width:30%">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="pesquisarFeira()">Pesquisar nome</a>
+		
+		
+	</div>
+
+    <div id="dlg" class="easyui-dialog" style="width:400px"
+            closed="true" buttons="#dlg-buttons">
+        <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+            <div style="margin-bottom:20px;font-size:14px;border-bottom:1px solid #ccc">Dados da feira</div>
+            <div style="margin-bottom:10px">
+                <input name="LONG" class="easyui-textbox" required="true" label="Longitude:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="LAT" class="easyui-textbox" required="true" label="Latitude:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="SETCENS" class="easyui-textbox" required="true" label="Setor censitário:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="AREAP" class="easyui-textbox" required="true" label="Área de ponderação:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="CODDIST" class="easyui-textbox" required="true" label="Código do distrito conforme IBGE:" style="width:100%">
+            </div><div style="margin-bottom:10px">
+                <input name="DISTRITO" class="easyui-textbox" required="true" label="Distrito municipal:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="CODSUBPREF" class="easyui-textbox" required="true" label="Código da Subprefeitura:" style="width:100%">
+            </div>
+
+            <div style="margin-bottom:10px">
+                <input name="SUBPREF" class="easyui-textbox" required="true" label="Subprefeitura:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="REGIAO5" class="easyui-textbox" required="true" label="Região conforme divisão do Município em 5 áreas:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="REGIAO8" class="easyui-textbox" required="true" label="Região conforme divisão do Município em 8 áreas" style="width:100%">
+            </div>
+             <div style="margin-bottom:10px">
+                <input name="NOME_FEIRA" class="easyui-textbox" required="true" label="Nome da feira livre:" style="width:100%">
+            </div>
+             <div style="margin-bottom:10px">
+                <input name="REGISTRO" class="easyui-textbox" required="true" label="Registro da feira livre:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="LOGRADOURO" class="easyui-textbox" required="true" label="Logradouro:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="NUMERO" class="easyui-textbox" required="true" label="Número:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="BAIRRO" class="easyui-textbox" required="true" label="Bairro:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="REFERENCIA" class="easyui-textbox" required="true"  label="Referência:" style="width:100%">
+            </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="salvarFeira()" style="width:90px">Salvar</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancelar</a>
+    </div>
+    <script type="text/javascript">
+        var url;
+        function novaFeira(){
+            $('#dlg').dialog('open').dialog('center').dialog('setTitle','Nova feira');
+            $('#fm').form('clear');
+            url = 'http://127.0.0.1:5000/feiras';
+        }
+        function editarFeira(){
+            var row = $('#dg').datagrid('getSelected');
+            if (row){
+                $('#dlg').dialog('open').dialog('center').dialog('setTitle','Editar feira');
+                $('#fm').form('load',row);
+                url = 'http://127.0.0.1:5000/atualizafeira/'+row.ID;
+            }
+        }
+        function salvarFeira(){
+			if($('#fm').form('validate'))
+			{
+				$.ajax({
+					type:'POST',
+					contentType: 'application/json',
+					url:url,
+					dataType: 'json',
+					data: formToJSON(),
+					success:function(result){
+						$.messager.show({
+							title: 'Informação',
+							msg: 'Dados gravados'
+						});
+						$('#dlg').dialog('close');        
+						$('#dg').datagrid('reload');    
+						
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						$.messager.show({
+							title: 'Erro',
+							msg: textStatus+' '+errorThrown
+						});
+						$('#dlg').dialog('close');       
+						$('#dg').datagrid('reload');    
+						
+					}
+					});
+			}
+			else
+			{
+				$.messager.show({
+							title: 'Validação',
+							msg: 'Verifique os campos digitados'
+				});
+			}
+			
+        }
+		
+
+		function formToJSON() {
+			return JSON.stringify({
+				"LONG":$("input[name=LONG").val(),
+				"LAT":$("input[name=LAT").val(),
+				"SETCENS":$("input[name=SETCENS").val(),
+				"AREAP":$("input[name=AREAP").val(),
+				"CODDIST":$("input[name=CODDIST").val(),
+				"DISTRITO":$("input[name=DISTRITO").val(),
+				"CODSUBPREF":$("input[name=CODSUBPREF").val(),
+				"SUBPREF":$("input[name=SUBPREF").val(),
+				"REGIAO5":$("input[name=REGIAO5").val(),
+				"REGIAO8":$("input[name=REGIAO8").val(),
+				"NOME_FEIRA":$("input[name=NOME_FEIRA").val(),
+				"REGISTRO":$("input[name=REGISTRO").val(),
+				"LOGRADOURO":$("input[name=LOGRADOURO").val(),
+				"NUMERO":$("input[name=NUMERO").val(),
+				"BAIRRO":$("input[name=BAIRRO").val(),
+				"REFERENCIA":$("input[name=REFERENCIA").val()	
+			});
+		}
+		function apagarFeira(){
+		
+		    var row = $('#dg').datagrid('getSelected');
+            if (row){
+                $.messager.confirm('Confirmação','Tem certeza que deseja apagar a feira?',function(r){
+                    if (r){
+                       	$.ajax({
+							type:'POST',
+							url:'http://127.0.0.1:5000/deletafeira/'+row.ID,
+							success:function(result){
+								$.messager.show({
+									title: 'Informação',
+									msg: 'Feira apagada'
+								});
+								$('#dlg').dialog('close');        
+								$('#dg').datagrid('reload');    
+								
+							},
+							error: function(XMLHttpRequest, textStatus, errorThrown) {
+								$.messager.show({
+									title: 'Erro',
+									msg: textStatus+' '+errorThrown
+								});
+								$('#dlg').dialog('close');       
+								$('#dg').datagrid('reload');   
+								
+							}
+						});
+                    }
+            })
+        
+		
+			}
+		}
+		function pesquisarFeira(){
+		 
+		    var nomeFeira = $("input[name=nomePesquisa").val();
+			$('#dg').datagrid({
+			url:'http://127.0.0.1:5000/buscafeira/'+nomeFeira
+			});
+			
+		
+		}
+		
+
+    </script>
+</body>
+</html>
