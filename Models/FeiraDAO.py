@@ -34,18 +34,16 @@ class FeiraDAO:
                                         feira.numero, feira.bairro, feira.referencia, idFeira))
         return {'status': 'success'}
 
-    def get_feiras(self):
+    def get_feiras(self)
         conn = self.db.connect()
         query = conn.execute("select * from feiras;")
         result = {'rows': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
         return jsonify(result)
 
     def busca_feiras(self, nome):
-        print(nome)
         conn = self.db.connect()
-        querystr = "select * from feiras where NOME_FEIRA like '%{0}%' ".format(nome)
-        print(querystr)
-        query = conn.execute(querystr)
+        querystr = "select * from feiras where NOME_FEIRA like ? "
+        query = conn.execute(querystr, '%'+nome+'%')
         result = {'rows': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
         return jsonify(result)
 

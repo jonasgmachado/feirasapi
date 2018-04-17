@@ -53,7 +53,6 @@ class AtualizarFeira(Resource):
         feiradb.update_feira(feira, idFeira)
 
 
-
 api.add_resource(Feiras, '/feiras')
 api.add_resource(ListaFeiras, '/listafeiras')
 api.add_resource(BuscaFeira, '/buscafeira/<nome>')
