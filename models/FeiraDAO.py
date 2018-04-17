@@ -1,6 +1,6 @@
 from flask import jsonify
 
-from Models.Feira import Feira
+from models.Feira import Feira
 from sqlalchemy import create_engine
 
 

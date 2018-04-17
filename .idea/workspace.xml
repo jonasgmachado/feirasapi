@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fa887e5-b95e-41b5-ae61-7ab988b329e6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/feiralivreapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/feiralivreapi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Feira.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Feira.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/FeiraDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/FeiraDAO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImportCsvScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImportCsvScript.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Feira.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Feira.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/FeiraDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/FeiraDAO.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -91,7 +85,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -112,7 +106,7 @@
             <path>
               <item name="feirasapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="feirasapi" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="feirasapi" type="b2602c69:ProjectViewProjectNode" />
@@ -284,7 +278,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14322917" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -316,12 +309,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url />
+          <url>file://$PROJECT_DIR$/models/Feira.py</url>
           <line>41</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url />
+          <url>file://$PROJECT_DIR$/models/FeiraDAO.py</url>
           <line>44</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -437,14 +430,14 @@
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask_restful/__init__.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask/app.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/werkzeug/serving.py" />
-    <entry file="file://$PROJECT_DIR$/Models/Feira.py">
+    <entry file="file://$PROJECT_DIR$/models/Feira.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/FeiraDAO.py">
+    <entry file="file://$PROJECT_DIR$/models/FeiraDAO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />

@@ -2,8 +2,8 @@
 from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
-from Models.Feira import Feira
-from Models.FeiraDAO import FeiraDAO
+from models.Feira import Feira
+from models.FeiraDAO import FeiraDAO
 
 db = create_engine('sqlite:///feirassp.db')
 app = Flask(__name__)

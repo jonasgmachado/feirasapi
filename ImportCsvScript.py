@@ -1,6 +1,6 @@
 from tkinter import filedialog
-from Models.Feira import Feira
-from Models.FeiraDAO import FeiraDAO
+from models.Feira import Feira
+from models.FeiraDAO import FeiraDAO
 import csv
 import json
 
