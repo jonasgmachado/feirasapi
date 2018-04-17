@@ -34,7 +34,7 @@ class FeiraDAO:
                                         feira.numero, feira.bairro, feira.referencia, idFeira))
         return {'status': 'success'}
 
-    def get_feiras(self)
+    def get_feiras(self):
         conn = self.db.connect()
         query = conn.execute("select * from feiras;")
         result = {'rows': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}

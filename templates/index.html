@@ -58,9 +58,10 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="novaFeira()">Nova Feira</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editarFeira()">Editar Feira</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="apagarFeira()">Apagar Feira</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="atualizarGrade()">Atualizar</a>
         <input name="nomePesquisa" class="easyui-textbox" label="" style="width:30%">
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="pesquisarFeira()">Pesquisar nome</a>
-		
+
 		
 	</div>
 
@@ -239,6 +240,11 @@
 			});
 			
 		
+		}
+		function atualizarGrade(){
+			$('#dg').datagrid({
+			url:'http://127.0.0.1:5000/listafeiras'
+			});
 		}
 		
 

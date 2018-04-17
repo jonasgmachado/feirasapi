@@ -1,7 +1,5 @@
-import csv
-import json
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from Models.Feira import Feira
@@ -19,6 +17,9 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
 
+@app.route('/home/')
+def static_page():
+    return render_template('index.html')
 
 class Feiras(Resource):
 
