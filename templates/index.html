@@ -129,6 +129,7 @@
             $('#dlg').dialog('open').dialog('center').dialog('setTitle','Nova feira');
             $('#fm').form('clear');
             url = 'http://127.0.0.1:5000/feiras';
+            type='POST'
         }
         function editarFeira(){
             var row = $('#dg').datagrid('getSelected');
@@ -136,13 +137,14 @@
                 $('#dlg').dialog('open').dialog('center').dialog('setTitle','Editar feira');
                 $('#fm').form('load',row);
                 url = 'http://127.0.0.1:5000/atualizafeira/'+row.ID;
+                type='PUT'
             }
         }
         function salvarFeira(){
 			if($('#fm').form('validate'))
 			{
 				$.ajax({
-					type:'POST',
+					type:type,
 					contentType: 'application/json',
 					url:url,
 					dataType: 'json',
@@ -205,7 +207,7 @@
                 $.messager.confirm('Confirmação','Tem certeza que deseja apagar a feira?',function(r){
                     if (r){
                        	$.ajax({
-							type:'POST',
+							type:'DELETE',
 							url:'http://127.0.0.1:5000/deletafeira/'+row.ID,
 							success:function(result){
 								$.messager.show({

@@ -42,12 +42,12 @@ class BuscaFeira(Resource):
 
 
 class DeletaFeira(Resource):
-    def post(self, idFeira):
+    def delete(self, idFeira):
         return feiradb.deleta_feira(idFeira)
 
 
 class AtualizarFeira(Resource):
-    def post(self, idFeira):
+    def put(self, idFeira):
         conn = db.connect()
         feira = Feira()
         feira.jsonToFeira(request.json)
