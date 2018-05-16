@@ -22,7 +22,7 @@ selecione o arquivo CSV e clique em OK
 
 ## Como usar
 
-Execute o aplicativo e em seguida navegue até o endereço http://127.0.0.1/home/ utilizando um navegador web de sua preferência
+Execute o aplicativo e em seguida navegue até o endereço http://127.0.0.1:5000/home/ utilizando um navegador web de sua preferência
 
 ### Inserir
 
